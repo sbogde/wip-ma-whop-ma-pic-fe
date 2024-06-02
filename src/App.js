@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from "react";
+import { Container, Typography } from "@mui/material";
+import ImageUpload from "./components/ImageUpload";
+import ResultsDisplay from "./components/ResultsDisplay";
 
 function App() {
+  const [results, setResults] = useState([]);
+  const [error, setError] = useState("");
+
+  const handleImageUpload = (image) => {
+    setResults([]);
+    setError("");
+    const formData = new FormData();
+    formData.append("image", image);
+
+    fetch("http://localhost:5000/classify", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("data", data);
+        setResults(data.results);
+        if (data?.error) {
+          setError(data.error);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Typography variant="h4" gutterBottom>
+        Image Classification
+      </Typography>
+      <ImageUpload onUpload={handleImageUpload} />
+      <ResultsDisplay results={results} error={error} />
+    </Container>
   );
 }
 
