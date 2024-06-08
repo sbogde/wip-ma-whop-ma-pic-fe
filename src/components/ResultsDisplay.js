@@ -3,7 +3,12 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
 
-const ResultsDisplay = ({ results, error }) => {
+const ResultsDisplay = ({ results, error, resizedImage }) => {
+  let resized_image_url = "";
+  if (resizedImage) {
+    resized_image_url = `http://localhost:5000/uploads/models/${resizedImage}`;
+  }
+
   return (
     <Card>
       <CardContent>
@@ -21,6 +26,24 @@ const ResultsDisplay = ({ results, error }) => {
           }: ${result.confidence.toFixed(2)}%`}</Typography>
         ))}
       </CardContent>
+
+      {resized_image_url && (
+        <CardContent>
+          <div>
+            <Typography variant="h6">Resized Image:</Typography>
+            <img
+              src={resized_image_url}
+              alt="Resized"
+              title={
+                results?.[0].label +
+                " - " +
+                results?.[0].confidence.toFixed(2) +
+                "%"
+              }
+            />
+          </div>
+        </CardContent>
+      )}
 
       {results?.length ? (
         <CardContent>

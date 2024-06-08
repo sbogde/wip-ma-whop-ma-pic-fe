@@ -7,10 +7,13 @@ import ResultsDisplay from "./components/ResultsDisplay";
 function App() {
   const [results, setResults] = useState([]);
   const [error, setError] = useState("");
+  const [resizedImage, setResizedImage] = useState("");
 
   const handleImageUpload = (image) => {
     setResults([]);
     setError("");
+    setResizedImage("");
+
     const formData = new FormData();
     formData.append("image", image);
 
@@ -22,6 +25,8 @@ function App() {
       .then((data) => {
         console.log("data", data);
         setResults(data.results);
+        setResizedImage(data.resized_image);
+
         if (data?.error) {
           setError(data.error);
         }
@@ -35,7 +40,11 @@ function App() {
         Image Classification
       </Typography>
       <ImageUpload onUpload={handleImageUpload} />
-      <ResultsDisplay results={results} error={error} />
+      <ResultsDisplay
+        results={results}
+        error={error}
+        resizedImage={resizedImage}
+      />
     </Container>
   );
 }
