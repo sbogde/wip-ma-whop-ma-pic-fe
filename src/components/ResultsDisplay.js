@@ -3,7 +3,7 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
 
-const ResultsDisplay = ({ results, error, resizedImage }) => {
+const ResultsDisplay = ({ results, error, resizedImage, modelUsed }) => {
   let resized_image_url = "";
   if (resizedImage) {
     resized_image_url = `http://localhost:5000/uploads/models/${resizedImage}`;
@@ -16,9 +16,7 @@ const ResultsDisplay = ({ results, error, resizedImage }) => {
 
         {<Typography variant="h5">Classification Results:</Typography>}
 
-        {results?.model && (
-          <Alert severity="success">Model: {results.model}</Alert>
-        )}
+        {modelUsed && <Alert severity="success">Model Used: {modelUsed}</Alert>}
 
         {results?.map((result, index) => (
           <Typography key={index}>{`${
