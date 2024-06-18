@@ -16,6 +16,8 @@ const ImageUpload = ({ onUpload }) => {
   return (
     <div>
       <Input type="file" onChange={handleImageChange} />
+      <br />
+      <br />
       <Button variant="contained" color="primary" onClick={handleUpload}>
         Upload
       </Button>
