@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-
-import { Card, CardContent, Typography } from "@mui/material";
-import { MenuItem, FormControl, Select, InputLabel } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  MenuItem,
+  FormControl,
+  Select,
+  InputLabel,
+} from "@mui/material";
 import ImageUpload from "./ImageUpload";
-// import ResultsDisplay from "./ResultsDisplay";
 
-const UploadForm = () => {
-  // const [results, setResults] = useState([]);
-  const [error, setError] = useState("");
-  // const [resizedImage, setResizedImage] = useState("");
+const UploadForm = ({ onResultsUpdate }) => {
   const [selectedModel, setSelectedModel] = useState("vgg16");
-  // const [modelUsed, setModelUsed] = useState("");
 
   const handleImageUpload = (image) => {
-    //   setResults([]);
-    setError("");
-    //   setResizedImage("");
-    //   setModelUsed("");
-
     const formData = new FormData();
     formData.append("image", image);
     formData.append("model", selectedModel);
@@ -29,13 +25,7 @@ const UploadForm = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("data", data);
-        //   setResults(data?.results);
-        //   setResizedImage(data?.resized_image);
-        //   setModelUsed(data?.model);
-
-        if (data?.error) {
-          setError(data.error);
-        }
+        onResultsUpdate(data);
       })
       .catch((error) => console.error("Error:", error));
   };
@@ -62,12 +52,6 @@ const UploadForm = () => {
         <br />
         <br />
         <ImageUpload onUpload={handleImageUpload} />
-        {/* <ResultsDisplay
-          results={results}
-          error={error}
-          resizedImage={resizedImage}
-          modelUsed={modelUsed}
-        /> */}
       </CardContent>
     </Card>
   );

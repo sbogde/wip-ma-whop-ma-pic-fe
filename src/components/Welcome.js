@@ -1,55 +1,14 @@
 import * as React from "react";
+
 import { alpha } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-// import React from 'react';
-import {
-  Card,
-  CardContent,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
+import Dashboard from "./Dashboard";
 
-import UploadForm from "./UploadForm";
-import ClassificationResults from "./ClassificationResults";
-import LogsTable from "./LogsTable";
-
-const Dashboard = () => {
-  return (
-    <Box sx={{ flexGrow: 1, p: 2, width: "100%" }}>
-      <Grid container spacing={2}>
-        {/* Upload Form */}
-        <Grid item xs={12} md={8}>
-          <UploadForm />
-        </Grid>
-
-        {/* Classification Results */}
-        <Grid item xs={12} md={4}>
-          <ClassificationResults />
-        </Grid>
-
-        {/* Logs Table */}
-        <Grid item xs={12}>
-          <LogsTable />
-        </Grid>
-      </Grid>
-    </Box>
-  );
-};
-
-export default function Hero() {
+export default function Welcome() {
   return (
     <Box
       id="hero"

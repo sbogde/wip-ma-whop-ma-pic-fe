@@ -1,18 +1,62 @@
 import React from "react";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import Avatar from "@mui/material/Avatar";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
-const ClassificationResults = () => {
+const ClassificationResults = ({ results, error, resizedImage, modelUsed }) => {
+  let resized_image_url = "";
+  if (resizedImage) {
+    resized_image_url = `http://localhost:5000/uploads/models/${resizedImage}`;
+  }
+
   return (
     <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom>
           Classification Results
         </Typography>
-        <Typography variant="h4">$3,024.00</Typography>
-        <Typography color="textSecondary">As of March 14th, 2023</Typography>
-        <Button variant="contained" sx={{ mt: 2 }}>
-          View balance
-        </Button>
+        {error && <Alert severity="error">{error}</Alert>}
+
+        {!error && modelUsed && modelUsed.length && (
+          <>
+            {modelUsed && (
+              <Alert severity="success">Model Used: {modelUsed}</Alert>
+            )}
+
+            {results?.map((result, index) => (
+              <Typography key={index}>{`${index + 1}. ${
+                result.label
+              }: ${result.confidence.toFixed(2)}%`}</Typography>
+            ))}
+
+            {resized_image_url && (
+              <CardContent>
+                <Avatar
+                  alt={
+                    results?.[0].label +
+                    " - " +
+                    results?.[0].confidence.toFixed(2) +
+                    "%"
+                  }
+                  title={
+                    results?.[0].label +
+                    " - " +
+                    results?.[0].confidence.toFixed(2) +
+                    "%"
+                  }
+                  src={resized_image_url}
+                  sx={{ width: 224, height: 224 }}
+                />
+              </CardContent>
+            )}
+          </>
+        )}
+
+        {!error && !modelUsed && (
+          <Alert severity="info">Please upload a pic first.</Alert>
+        )}
       </CardContent>
     </Card>
   );

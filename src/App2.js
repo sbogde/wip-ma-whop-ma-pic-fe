@@ -9,7 +9,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
 import AppAppBar from "./components/AppAppBar";
-import Hero from "./components/Hero";
+import Welcome from "./components/Welcome";
 import LogoCollection from "./components/LogoCollection";
 import Highlights from "./components/Highlights";
 import Pricing from "./components/Pricing";
@@ -80,7 +80,7 @@ export default function LandingPage() {
     <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
-      <Hero />
+      <Welcome />
       <Box sx={{ bgcolor: "background.default" }}>
         <LogoCollection />
         <Features />
