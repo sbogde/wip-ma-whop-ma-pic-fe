@@ -21,7 +21,7 @@ const UploadForm = ({ onResultsUpdate }) => {
     formData.append("image", image);
     formData.append("model", selectedModel);
 
-    fetch("http://localhost:5000/classify", {
+    fetch(`${process.env.REACT_APP_API_URL}/classify`, {
       method: "POST",
       body: formData,
     })
@@ -30,7 +30,13 @@ const UploadForm = ({ onResultsUpdate }) => {
         console.log("data", data);
         onResultsUpdate(data);
       })
-      .catch((error) => console.error("Error:", error))
+      .catch((error) => {
+        // console.error("Error:", error, typeof error);
+        let errorMessage = error.message ? error.message : `Couldn't upload`;
+        errorMessage += ` [${process.env.REACT_APP_API_URL}]`;
+
+        onResultsUpdate({ error: errorMessage });
+      })
       .finally(() => {
         setLoading(false);
       });

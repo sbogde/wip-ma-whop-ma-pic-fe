@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 const ClassificationResults = ({ results, error, resizedImage, modelUsed }) => {
   let resized_image_url = "";
   if (resizedImage) {
-    resized_image_url = `http://localhost:5000/uploads/models/${resizedImage}`;
+    resized_image_url = `${process.env.REACT_APP_API_URL}/uploads/models/${resizedImage}`;
   }
 
   return (
