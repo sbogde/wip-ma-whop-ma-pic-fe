@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  MenuItem,
-  FormControl,
-  Select,
-  InputLabel,
-} from "@mui/material";
+
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import Typography from "@mui/material/Typography";
+
 import ImageUpload from "./ImageUpload";
 
 const UploadForm = ({ onResultsUpdate }) => {
   const [selectedModel, setSelectedModel] = useState("vgg16");
+  const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (image) => {
+    setLoading(true);
+
     const formData = new FormData();
     formData.append("image", image);
     formData.append("model", selectedModel);
@@ -27,7 +30,10 @@ const UploadForm = ({ onResultsUpdate }) => {
         console.log("data", data);
         onResultsUpdate(data);
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -51,7 +57,7 @@ const UploadForm = ({ onResultsUpdate }) => {
         </FormControl>
         <br />
         <br />
-        <ImageUpload onUpload={handleImageUpload} />
+        <ImageUpload onUpload={handleImageUpload} loading={loading} />
       </CardContent>
     </Card>
   );
