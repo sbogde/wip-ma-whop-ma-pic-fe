@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import ImageUpload from "./ImageUpload";
 
 const UploadForm = ({ onResultsUpdate }) => {
-  const [selectedModel, setSelectedModel] = useState("vgg16");
+  const [selectedModel, setSelectedModel] = useState("mobilenet");
   const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (image) => {
@@ -49,7 +49,7 @@ const UploadForm = ({ onResultsUpdate }) => {
           Upload Image
         </Typography>
         <FormControl fullWidth margin="normal">
-          <InputLabel id="model-select-label">Model</InputLabel>
+          <InputLabel id="model-select-label">KrsApp</InputLabel>
           <Select
             labelId="model-select-label"
             id="model-select"
@@ -57,8 +57,9 @@ const UploadForm = ({ onResultsUpdate }) => {
             label="Model"
             onChange={(e) => setSelectedModel(e.target.value)}
           >
-            <MenuItem value="vgg16">VGG16</MenuItem>
-            <MenuItem value="vgg19">VGG19</MenuItem>
+            <MenuItem value="mobilenet">MobileNet</MenuItem>
+            <MenuItem value="efficientnetb0">EfficientNetB0</MenuItem>
+            <MenuItem value="efficientnetb1">EfficientNetB1</MenuItem>
           </Select>
         </FormControl>
         <br />
