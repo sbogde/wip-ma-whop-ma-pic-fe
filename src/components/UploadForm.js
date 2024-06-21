@@ -1,33 +1,33 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Typography from "@mui/material/Typography";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Typography from '@mui/material/Typography';
 
-import ImageUpload from "./ImageUpload";
+import ImageUpload from './ImageUpload';
 
 const UploadForm = ({ onResultsUpdate }) => {
-  const [selectedModel, setSelectedModel] = useState("mobilenet");
+  const [selectedModel, setSelectedModel] = useState('mobilenet');
   const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (image) => {
     setLoading(true);
 
     const formData = new FormData();
-    formData.append("image", image);
-    formData.append("model", selectedModel);
+    formData.append('image', image);
+    formData.append('model', selectedModel);
 
     fetch(`${process.env.REACT_APP_API_URL}/classify`, {
-      method: "POST",
+      method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("data", data);
+        console.log('data', data);
         onResultsUpdate(data);
       })
       .catch((error) => {
@@ -45,21 +45,22 @@ const UploadForm = ({ onResultsUpdate }) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant='h6' gutterBottom>
           Upload Image
         </Typography>
-        <FormControl fullWidth margin="normal">
-          <InputLabel id="model-select-label">KrsApp</InputLabel>
+        <FormControl fullWidth margin='normal'>
+          <InputLabel id='model-select-label'>KrsApp</InputLabel>
           <Select
-            labelId="model-select-label"
-            id="model-select"
+            labelId='model-select-label'
+            id='model-select'
             value={selectedModel}
-            label="Model"
+            label='Model'
             onChange={(e) => setSelectedModel(e.target.value)}
           >
-            <MenuItem value="mobilenet">MobileNet</MenuItem>
-            <MenuItem value="efficientnetb0">EfficientNetB0</MenuItem>
-            <MenuItem value="efficientnetb1">EfficientNetB1</MenuItem>
+            <MenuItem value='mobilenet'>MobileNet</MenuItem>
+            <MenuItem value='efficientnetb0'>EfficientNetB0</MenuItem>
+            <MenuItem value='efficientnetb1'>EfficientNetB1</MenuItem>
+            <MenuItem value='densenet121'>DenseNet121</MenuItem>
           </Select>
         </FormControl>
         <br />
