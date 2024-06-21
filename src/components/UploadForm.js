@@ -66,6 +66,8 @@ const UploadForm = ({ onResultsUpdate }) => {
             <MenuItem value="efficientnetb4">EfficientNetB4</MenuItem>
             <MenuItem value="inceptionv3">InceptionV3</MenuItem>
             <MenuItem value="xception">Xception</MenuItem>
+            <MenuItem value="vgg16">VGG16</MenuItem>
+            <MenuItem value="vgg19">VGG19</MenuItem>
           </Select>
         </FormControl>
         <br />
