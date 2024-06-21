@@ -55,7 +55,7 @@ const ClassificationResults = ({ results, error, resizedImage, modelUsed }) => {
         )}
 
         {!error && !modelUsed && (
-          <Alert severity="info">Please upload a pic first.</Alert>
+          <Alert severity="warning">Please upload a pic first.</Alert>
         )}
       </CardContent>
     </Card>

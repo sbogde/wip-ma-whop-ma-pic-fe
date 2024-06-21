@@ -1,80 +1,104 @@
-// src/App.js
-import React, { useState } from "react";
-import {
-  Container,
-  Typography,
-  MenuItem,
-  FormControl,
-  Select,
-  InputLabel,
-} from "@mui/material";
-import ImageUpload from "./components/ImageUpload";
-import ResultsDisplay from "./components/ResultsDisplay";
+import * as React from "react";
+import PropTypes from "prop-types";
 
-function App() {
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState("");
-  const [resizedImage, setResizedImage] = useState("");
-  const [selectedModel, setSelectedModel] = useState("vgg16");
-  const [modelUsed, setModelUsed] = useState("");
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+// import ToggleButton from "@mui/material/ToggleButton";
+// import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+// import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+import AppAppBar from "./components/AppAppBar";
+import Welcome from "./components/Welcome";
+import LogoCollection from "./components/LogoCollection";
+import Highlights from "./components/Highlights";
+import Pricing from "./components/Pricing";
+import Features from "./components/Features";
+import Testimonials from "./components/Testimonials";
+import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
+import getLPTheme from "./getLPTheme";
 
-  const handleImageUpload = (image) => {
-    setResults([]);
-    setError("");
-    setResizedImage("");
-    setModelUsed("");
+function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
+  return <></>;
+  // return (
+  //   <Box
+  //     sx={{
+  //       display: "flex",
+  //       flexDirection: "column",
+  //       alignItems: "center",
+  //       width: "100dvw",
+  //       position: "fixed",
+  //       bottom: 24,
+  //     }}
+  //   >
+  //     <ToggleButtonGroup
+  //       color="primary"
+  //       exclusive
+  //       value={showCustomTheme}
+  //       onChange={toggleCustomTheme}
+  //       aria-label="Platform"
+  //       sx={{
+  //         backgroundColor: "background.default",
+  //         "& .Mui-selected": {
+  //           pointerEvents: "none",
+  //         },
+  //       }}
+  //     >
+  //       <ToggleButton value>
+  //         <AutoAwesomeRoundedIcon sx={{ fontSize: "20px", mr: 1 }} />
+  //         Custom theme
+  //       </ToggleButton>
+  //       <ToggleButton value={false}>Material Design 2</ToggleButton>
+  //     </ToggleButtonGroup>
+  //   </Box>
+  // );
+}
 
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("model", selectedModel);
+ToggleCustomTheme.propTypes = {
+  showCustomTheme: PropTypes.shape({
+    valueOf: PropTypes.func.isRequired,
+  }).isRequired,
+  toggleCustomTheme: PropTypes.func.isRequired,
+};
 
-    fetch("http://localhost:5000/classify", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("data", data);
-        setResults(data?.results);
-        setResizedImage(data?.resized_image);
-        setModelUsed(data?.model);
+export default function LandingPage() {
+  const [mode, setMode] = React.useState("light");
+  const [showCustomTheme, setShowCustomTheme] = React.useState(false);
+  const LPtheme = createTheme(getLPTheme(mode));
+  const defaultTheme = createTheme({ palette: { mode } });
 
-        if (data?.error) {
-          setError(data.error);
-        }
-      })
-      .catch((error) => console.error("Error:", error));
+  const toggleColorMode = () => {
+    setMode((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
+  const toggleCustomTheme = () => {
+    setShowCustomTheme((prev) => !prev);
   };
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Image Classification
-      </Typography>
-
-      <FormControl fullWidth margin="normal">
-        <InputLabel id="model-select-label">Model</InputLabel>
-        <Select
-          labelId="model-select-label"
-          id="model-select"
-          value={selectedModel}
-          label="Model"
-          onChange={(e) => setSelectedModel(e.target.value)}
-        >
-          <MenuItem value="vgg16">VGG16</MenuItem>
-          <MenuItem value="vgg19">VGG19</MenuItem>
-        </Select>
-      </FormControl>
-
-      <ImageUpload onUpload={handleImageUpload} />
-      <ResultsDisplay
-        results={results}
-        error={error}
-        resizedImage={resizedImage}
-        modelUsed={modelUsed}
+    <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
+      <CssBaseline />
+      <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+      <Welcome />
+      <Box sx={{ bgcolor: "background.default" }}>
+        <LogoCollection />
+        <Features />
+        <Divider />
+        <Testimonials />
+        <Divider />
+        <Highlights />
+        <Divider />
+        <Pricing />
+        <Divider />
+        <FAQ />
+        <Divider />
+        <Footer />
+      </Box>
+      <ToggleCustomTheme
+        showCustomTheme={showCustomTheme}
+        toggleCustomTheme={toggleCustomTheme}
       />
-    </Container>
+    </ThemeProvider>
   );
 }
-
-export default App;
