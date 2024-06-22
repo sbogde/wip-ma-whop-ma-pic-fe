@@ -60,13 +60,14 @@ const UploadForm = ({ onResultsUpdate }) => {
             <MenuItem value="densenet121">DenseNet121</MenuItem>
             <MenuItem value="mobilenet">MobileNet</MenuItem>
             <MenuItem value="efficientnetb0">EfficientNetB0</MenuItem>
-            <MenuItem value="efficientnetb1">EfficientNetB1</MenuItem>
+            {/* <MenuItem value="efficientnetb1">EfficientNetB1</MenuItem> */}
             <MenuItem value="efficientnetb2">EfficientNetB2</MenuItem>
-            <MenuItem value="efficientnetb3">EfficientNetB3</MenuItem>
+            {/* <MenuItem value="efficientnetb3">EfficientNetB3</MenuItem> */}
             <MenuItem value="efficientnetb4">EfficientNetB4</MenuItem>
-            <MenuItem value="inceptionv3">InceptionV3</MenuItem>
-            <MenuItem value="xception">Xception</MenuItem>
-            <MenuItem value="vgg16">VGG16</MenuItem>
+            {/* <MenuItem value="inceptionv3">InceptionV3</MenuItem> */}
+            {/* <MenuItem value="xception">Xception</MenuItem> */}
+            {/* <MenuItem value="vgg16">VGG16</MenuItem> */}
+            <MenuItem value="efficientnetb7">EfficientNetB7</MenuItem>
             <MenuItem value="vgg19">VGG19</MenuItem>
           </Select>
         </FormControl>
