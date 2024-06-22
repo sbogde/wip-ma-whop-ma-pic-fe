@@ -14,7 +14,7 @@ import {
 
 const rows = [
   {
-    id: 123,
+    id: 122,
     filename: "cat.jpg",
     model: "mobilenet",
     prediction: "tiger_cat",
@@ -26,7 +26,7 @@ const rows = [
     saleAmount: "$312.44",
   },
   {
-    id: 124,
+    id: 121,
     filename: "cat.jpg",
     model: "mobilenet",
     prediction: "tiger_cat",
@@ -38,7 +38,7 @@ const rows = [
     saleAmount: "$654.39",
   },
   {
-    id: 125,
+    id: 120,
     filename: "cat.jpg",
     model: "mobilenet",
     prediction: "tiger_cat",
@@ -50,7 +50,19 @@ const rows = [
     saleAmount: "$212.79",
   },
   {
-    id: 126,
+    id: 119,
+    filename: "cat.jpg",
+    model: "mobilenet",
+    prediction: "tiger_cat",
+    confidence: 18.744444,
+    date: "2024-06-20 21:31:49",
+    name: "Michael Jackson",
+    shipTo: "Gary, IN",
+    paymentMethod: "MC •••• 1253",
+    saleAmount: "$866.99",
+  },
+  {
+    id: 118,
     filename: "cat.jpg",
     model: "mobilenet",
     prediction: "tiger_cat",
@@ -75,7 +87,7 @@ const LogsTable = () => {
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
-                <TableCell>File Name</TableCell>
+                <TableCell>Image</TableCell>
                 <TableCell>Model</TableCell>
                 <TableCell>Prediction</TableCell>
                 <TableCell>Confidence</TableCell>
