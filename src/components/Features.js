@@ -16,27 +16,30 @@ import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 const items = [
   {
     icon: <ViewQuiltRoundedIcon />,
-    title: "Dashboard",
+    title: "VGG16 / VGG19",
     description:
-      "This item could provide a snapshot of the most important metrics or data points related to the product.",
-    imageLight: 'url("/static/dash-light.png")',
-    imageDark: 'url("/static/dash-light.png")',
+      "VGG16 and VGG19 are deep convolutional neural networks developed by the Visual Geometry Groups at the University of Oxford. Both models emphasise network depth and the use of small 3x3 convolution filters. VGG16 has 16 weight layers, while VGG19 has 19.",
+    imageLight: 'url("/static/vgg16.jpg")',
+    imageDark: 'url("/static/vgg16.jpg")',
+    link: "https://www.geeksforgeeks.org/vgg-16-cnn-model",
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
-    title: "Mobile integration",
+    title: "EfficientNetB7",
     description:
-      "This item could provide information about the mobile app version of the product.",
-    imageLight: 'url("/static/mobile-light.png")',
-    imageDark: 'url("/static/mobile-light.png")',
+      "EfficientNetB7 is part of the EfficientNet family, which scales the depth, width, and resolution of the network systematically. EfficientNetB7 is one of the largest models in this family, offering high accuracy while maintaining computational efficiency.",
+    imageLight: 'url("/static/EfficientNetB7.PNG")',
+    imageDark: 'url("/static/EfficientNetB7.PNG")',
+    link: "https://arxiv.org/pdf/1905.11946",
   },
   {
     icon: <DevicesRoundedIcon />,
-    title: "Available on all platforms",
+    title: "InceptionV3",
     description:
-      "This item could let users know the product is available on all platforms, such as web, mobile, and desktop.",
-    imageLight: 'url("/static/devices-light.png")',
-    imageDark: 'url("/static/devices-light.png")',
+      "InceptionV3 incorporates factorised convolutions to reduce computational costs and improve training speed. The architecture includes the use of auxiliary classifiers during training, which helps to combat the vanishing gradient problem.",
+    imageLight: 'url("/static/InceptionV3.PNG")',
+    imageDark: 'url("/static/InceptionV3.PNG")',
+    link: "#",
   },
 ];
 
@@ -55,16 +58,14 @@ export default function Features() {
         <Grid item xs={12} md={6}>
           <div>
             <Typography component="h2" variant="h4" color="text.primary">
-              Product features
+              Models
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
               sx={{ mb: { xs: 2, sm: 4 } }}
             >
-              Here you can provide a brief overview of the key features of the
-              product. For example, you could list the number of features, the
-              types of features, add-ons, or the benefits of the features.
+              Here you have a brief overview of the Models/Keras Apps used.
             </Typography>
           </div>
           <Grid
@@ -73,7 +74,7 @@ export default function Features() {
             gap={1}
             sx={{ display: { xs: "auto", sm: "none" } }}
           >
-            {items.map(({ title }, index) => (
+            {items.map(({ title, link }, index) => (
               <Chip
                 key={index}
                 label={title}
@@ -114,8 +115,10 @@ export default function Features() {
                   theme.palette.mode === "light"
                     ? items[selectedItemIndex].imageLight
                     : items[selectedItemIndex].imageDark,
-                backgroundSize: "cover",
+                // backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+
                 minHeight: 280,
               }}
             />
@@ -145,7 +148,7 @@ export default function Features() {
                   "&:hover > svg": { transform: "translateX(2px)" },
                 }}
               >
-                <span>Learn more</span>
+                <span>More</span>
                 <ChevronRightRoundedIcon
                   fontSize="small"
                   sx={{ mt: "1px", ml: "2px" }}
@@ -161,7 +164,7 @@ export default function Features() {
             useFlexGap
             sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}
           >
-            {items.map(({ icon, title, description }, index) => (
+            {items.map(({ icon, title, description, link }, index) => (
               <Card
                 key={index}
                 variant="outlined"
@@ -237,6 +240,8 @@ export default function Features() {
                         "& > svg": { transition: "0.2s" },
                         "&:hover > svg": { transform: "translateX(2px)" },
                       }}
+                      target="_blank"
+                      href={link}
                       onClick={(event) => {
                         event.stopPropagation();
                       }}
@@ -273,6 +278,8 @@ export default function Features() {
                 m: "auto",
                 width: 420,
                 height: 500,
+                backgroundRepeat: "no-repeat",
+
                 backgroundSize: "contain",
                 backgroundImage: (theme) =>
                   theme.palette.mode === "light"

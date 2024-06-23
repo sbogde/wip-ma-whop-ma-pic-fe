@@ -49,7 +49,7 @@ const UploadForm = ({ onResultsUpdate }) => {
           Upload Image
         </Typography>
         <FormControl fullWidth margin="normal">
-          <InputLabel id="model-select-label">KrsApp</InputLabel>
+          <InputLabel id="model-select-label">Model</InputLabel>
           <Select
             labelId="model-select-label"
             id="model-select"
