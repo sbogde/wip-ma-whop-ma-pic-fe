@@ -122,7 +122,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    FAQ
+                    FAQs
                   </Typography>
                 </MenuItem>
               </Box>
@@ -189,45 +189,15 @@ function AppAppBar({ mode, toggleColorMode }) {
                     />
                   </Box>
                   <MenuItem onClick={() => scrollToSection("features")}>
-                    Features
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("testimonials")}>
-                    Testimonials
+                    Models
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection("highlights")}>
                     Highlights
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("pricing")}>
-                    Pricing
-                  </MenuItem>
                   <MenuItem onClick={() => scrollToSection("faq")}>
-                    FAQ
+                    FAQs
                   </MenuItem>
                   <Divider />
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
-                      sx={{ width: "100%" }}
-                    >
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
-                      sx={{ width: "100%" }}
-                    >
-                      Sign in
-                    </Button>
-                  </MenuItem>
                 </Box>
               </Drawer>
             </Box>
