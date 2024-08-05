@@ -46,7 +46,7 @@ const UploadForm = ({ onResultsUpdate }) => {
     <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom>
-          Upload Image
+          Upload Image (feature disabled atm 😿)
         </Typography>
         <FormControl fullWidth margin="normal">
           <InputLabel id="model-select-label">Model</InputLabel>

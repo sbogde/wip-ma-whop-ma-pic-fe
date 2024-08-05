@@ -31,7 +31,7 @@ const ImageUpload = ({ onUpload, loading }) => {
           variant="contained"
           color="primary"
           onClick={handleUpload}
-          disabled={loading}
+          disabled={true || loading}
         >
           {loading ? "Please wait..." : "Upload"}
         </Button>
