@@ -30,7 +30,7 @@ const Dashboard = () => {
         <Grid item xs={12} md={4}>
           <ClassificationResults
             results={results}
-            error="Sorry, feature currently disabled."
+            error={"Sorry, feature currently disabled." + error}
             resizedImage={resizedImage}
             modelUsed={modelUsed}
           />
