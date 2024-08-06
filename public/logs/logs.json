@@ -1,0 +1,93 @@
+[
+  {
+    "confidence": 65.8188402652741,
+    "created_at": "2024-06-24 19:11:01",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191101_cat.jpg",
+    "id": 236,
+    "model_name": "vgg19",
+    "prediction": "tabby"
+  },
+  {
+    "confidence": 14.2963722348213,
+    "created_at": "2024-06-24 19:11:01",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191101_cat.jpg",
+    "id": 237,
+    "model_name": "vgg19",
+    "prediction": "tiger_cat"
+  },
+  {
+    "confidence": 3.13837081193924,
+    "created_at": "2024-06-24 19:11:01",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191101_cat.jpg",
+    "id": 238,
+    "model_name": "vgg19",
+    "prediction": "Egyptian_cat"
+  },
+  {
+    "confidence": 0.912813190370798,
+    "created_at": "2024-06-24 19:11:01",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191101_cat.jpg",
+    "id": 239,
+    "model_name": "vgg19",
+    "prediction": "cup"
+  },
+  {
+    "confidence": 0.618146499618888,
+    "created_at": "2024-06-24 19:11:01",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191101_cat.jpg",
+    "id": 240,
+    "model_name": "vgg19",
+    "prediction": "carton"
+  },
+
+  {
+    "confidence": 60.07868051528931,
+    "created_at": "2024-06-24 19:10:58",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191058_cat.jpg",
+    "id": 231,
+    "model_name": "vgg16",
+    "prediction": "tabby"
+  },
+  {
+    "confidence": 22.808559238910675,
+    "created_at": "2024-06-24 19:10:58",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191058_cat.jpg",
+    "id": 232,
+    "model_name": "vgg16",
+    "prediction": "tiger_cat"
+  },
+  {
+    "confidence": 2.730703353881836,
+    "created_at": "2024-06-24 19:10:58",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191058_cat.jpg",
+    "id": 233,
+    "model_name": "vgg16",
+    "prediction": "plastic_bag"
+  },
+  {
+    "confidence": 1.702425442636013,
+    "created_at": "2024-06-24 19:10:58",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191058_cat.jpg",
+    "id": 234,
+    "model_name": "vgg16",
+    "prediction": "Egyptian_cat"
+  },
+  {
+    "confidence": 1.0981615632772446,
+    "created_at": "2024-06-24 19:10:58",
+    "filename_original": "cat.jpg",
+    "filename_server": "resized_20240624191058_cat.jpg",
+    "id": 235,
+    "model_name": "vgg16",
+    "prediction": "Persian_cat"
+  }
+]

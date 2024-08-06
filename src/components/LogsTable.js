@@ -26,9 +26,7 @@ const LogsTable = () => {
 
   const fetchLogs = async (n) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/logs/${n}`
-      );
+      const response = await fetch(`/logs/logs.json`);
       const data = await response.json();
       setLogs(data);
 
@@ -87,7 +85,7 @@ const LogsTable = () => {
                     <Avatar
                       alt={log.filename_original}
                       title={log.filename_original}
-                      src={`${process.env.REACT_APP_API_URL}/uploads/models/${log.filename_server}`}
+                      src={`/uploads/models/${log.filename_server}`}
                       sx={{ width: 32, height: 32 }}
                     />
                   </TableCell>
@@ -111,7 +109,7 @@ const LogsTable = () => {
             variant="contained"
             startIcon={<ArrowBackIcon />}
             onClick={() => setN(n - 5)}
-            disabled={n === 0}
+            disabled={true || n === 0}
           >
             Previous
           </Button>
@@ -119,7 +117,7 @@ const LogsTable = () => {
             variant="contained"
             endIcon={<ArrowForwardIcon />}
             onClick={() => setN(n + 5)}
-            disabled={disableNext}
+            disabled={true || disableNext}
           >
             Next
           </Button>
