@@ -3,6 +3,8 @@ import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+
 import Typography from "@mui/material/Typography";
 
 const ClassificationResults = ({ results, error, resizedImage, modelUsed }) => {
@@ -15,7 +17,7 @@ const ClassificationResults = ({ results, error, resizedImage, modelUsed }) => {
     <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom>
-          Classification Results
+          Segmentation Results
         </Typography>
         {error && <Alert severity="error">{error}</Alert>}
 
@@ -33,26 +35,46 @@ const ClassificationResults = ({ results, error, resizedImage, modelUsed }) => {
 
             {resized_image_url && (
               <CardContent>
-                <Avatar
+                {/* <Avatar
                   alt={
-                    results?.[0].label +
+                    results?.[0]?.label +
                     " - " +
-                    results?.[0].confidence.toFixed(2) +
+                    results?.[0]?.confidence.toFixed(2) +
                     "%"
                   }
                   title={
-                    results?.[0].label +
+                    results?.[0]?.label +
                     " - " +
-                    results?.[0].confidence.toFixed(2) +
+                    results?.[0]?.confidence.toFixed(2) +
                     "%"
                   }
                   src={resized_image_url}
                   sx={{ width: 224, height: 224 }}
+                /> */}
+
+                <CardMedia
+                  component="img"
+                  height="100%"
+                  image={resized_image_url}
+                  alt={
+                    results?.[0]?.label +
+                    " - " +
+                    results?.[0]?.confidence.toFixed(2) +
+                    "%"
+                  }
                 />
               </CardContent>
             )}
           </>
         )}
+
+        <Alert severity="warning">
+          {results.map((p, i) => (
+            <div key={i}>
+              {p.label} - {p.confidence.toFixed(2)}%
+            </div>
+          ))}
+        </Alert>
 
         {!error && !modelUsed && (
           <Alert severity="warning">Please upload a pic first.</Alert>

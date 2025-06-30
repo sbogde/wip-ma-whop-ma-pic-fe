@@ -24,10 +24,10 @@ const Dashboard = () => {
   return (
     <Box sx={{ flexGrow: 1, p: 2, width: "100%" }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={4}>
           <UploadForm onResultsUpdate={handleResultsUpdate} />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={8}>
           <ClassificationResults
             results={results}
             error={error}

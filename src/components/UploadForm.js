@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import ImageUpload from "./ImageUpload";
 
 const UploadForm = ({ onResultsUpdate }) => {
-  const [selectedModel, setSelectedModel] = useState("efficientnetb0");
+  const [selectedModel, setSelectedModel] = useState("yolov8n-seg");
   const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (image) => {
@@ -21,7 +21,7 @@ const UploadForm = ({ onResultsUpdate }) => {
     formData.append("image", image);
     formData.append("model", selectedModel);
 
-    fetch(`${process.env.REACT_APP_API_URL}/classify`, {
+    fetch(`${process.env.REACT_APP_API_URL}/segment`, {
       method: "POST",
       body: formData,
     })
@@ -57,7 +57,33 @@ const UploadForm = ({ onResultsUpdate }) => {
             label="Model"
             onChange={(e) => setSelectedModel(e.target.value)}
           >
-            <MenuItem value="densenet121">DenseNet121</MenuItem>
+            <MenuItem value="yolov8n-seg">yolov8n-seg</MenuItem>
+            <MenuItem value="yolov8s-seg">yolov8s-seg</MenuItem>
+            <MenuItem value="yolov8m-seg">yolov8m-seg</MenuItem>
+            <MenuItem value="yolov8l-seg">yolov8l-seg</MenuItem>
+            <MenuItem value="yolov8x-seg">yolov8x-seg</MenuItem>
+
+            <MenuItem value="myfoodrepo-best">myfoodrepo-best</MenuItem>
+            <MenuItem value="food-recognition-v0.4-best">
+              food-recognition-v0.4-best
+            </MenuItem>
+            <MenuItem value="food-recognition-v2.1-yolo-v8-m-best">
+              food-recognition-v2.1-yolo-v8-m-best
+            </MenuItem>
+
+            <MenuItem value="food-recognition-v2.1-yv8l-75-768-73">
+              food-recognition-v2.1-yv8l-75-768-73
+            </MenuItem>
+
+            <MenuItem value="food-recognition-v2.1-yv8l-75-768-75-best">
+              food-recognition-v2.1-yv8l-75-768-75-best
+            </MenuItem>
+
+            <MenuItem value="hub-v0.4-272">hub-v0.4-272</MenuItem>
+            <MenuItem value="hub-v0.4-272">hub-v2.1-272</MenuItem>
+            <MenuItem value="hruns864">runs864</MenuItem>
+
+            {/* <MenuItem value="densenet121">DenseNet121</MenuItem>
             <MenuItem value="mobilenet">MobileNet</MenuItem>
             <MenuItem value="efficientnetb0">EfficientNetB0</MenuItem>
             <MenuItem value="efficientnetb1">EfficientNetB1</MenuItem>
@@ -68,7 +94,7 @@ const UploadForm = ({ onResultsUpdate }) => {
             <MenuItem value="inceptionv3">InceptionV3</MenuItem>
             <MenuItem value="xception">Xception</MenuItem>
             <MenuItem value="vgg16">VGG16</MenuItem>
-            <MenuItem value="vgg19">VGG19</MenuItem>
+            <MenuItem value="vgg19">VGG19</MenuItem> */}
           </Select>
         </FormControl>
         <br />
